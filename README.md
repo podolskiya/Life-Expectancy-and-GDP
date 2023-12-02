@@ -1,4 +1,4 @@
-# Life-Expectancy-GDP-Liberty
+# CivilLiberty-GDP-LifeExcpectancy
 Here is my portfolio project showcasing my Python and Data Analysis skills
 
 Here are the objectives I consider incorporating in my code:
