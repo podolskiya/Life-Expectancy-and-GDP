@@ -28,8 +28,8 @@ Here are the objectives I consider incorporating in my code:
 Data for GDP per country per capita in US dollars (2022 or latest available) provided by OECD, available: 
 https://data.oecd.org/gdp/gross-domestic-product-gdp.htm
 
-Data for Life Expectancy at birth (2022) provided by United Nations, available: 
-https://data.worldbank.org/indicator/SP.DYN.LE00.IN
+Data for Life Expectancy at birth (2022 or latest) provided by OECD, available: 
+[https://data.worldbank.org/indicator/SP.DYN.LE00.IN](https://data.oecd.org/healthstat/life-expectancy-at-birth.htm)
 
 Data for Civil liberties index ranged from 0 to 10 (most liberties) provided by the Economist Intelligence Unit (2023), available: 
 https://ourworldindata.org/grapher/civil-liberties-index-eiu?tab=table
