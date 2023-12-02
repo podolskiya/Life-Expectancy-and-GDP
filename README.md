@@ -7,25 +7,25 @@ Here are the objectives I consider incorporating in my code:
 * Normalize/standardize the data if necsesary for better analyzis.
 * Identify and handle outliers that might affect the analysis.
 ### 2. Statistical Analysis
-* Perform statistical tests to quantify the relationship between GDP and Life Expectancy and Liberties.
-  * Simple linear regression: GDP and Life Expectancy, GDP and Liberties, Life Expectancy and Liberties
-  * Multiple linear regression: What is the effect of Liberties and GDP on Life Expectancy
+* Perform statistical tests to quantify the relationship between GDP per capita and Life Expectancy and Liberties.
+  * Simple linear regression: GDP per capita and Life Expectancy, GDP per capita and Liberties, Life Expectancy and Liberties
+  * Multiple linear regression: What is the effect of Liberties and GDP per capita on Life Expectancy
   * Pearson's r: Life Expectancy and Liberties
 * Conduct regression analysis to model the relationship between these variables.
 ### 3. Data Visualization
 * Create visualizations using libraries such as Pltly
-* Visualize the geographical distribution of GDP and life expectacny using maps (Folium)
+* Visualize the geographical distribution of GDP per capita and life expectacny using maps (Folium)
 ### 4. Machine Learning Techniques:
-* Implement predictive models like linear regression or decision trees to forecase life expectancy based on GDP
+* Implement predictive models like linear regression or decision trees to forecase life expectancy based on GDP per capita
 * Evaluate and compare different machine learning modelos for prediciton accuracy
 ### 5. Time Series Analysis:
-* Explore how GDP and life expectancy have changed over time for selected  regions.
+* Explore how GDP per capita and life expectancy have changed over time for selected  regions.
 * Apply time series forecasting techniques to predict future trends.
 ### 6. Paper
 * Write a brief paper regarding findings from this analysis.
 
 ### Sources
-Data for GDP per country in US dollars (2022 or latest available) provided by OECD, available: 
+Data for GDP per country per capita in US dollars (2022 or latest available) provided by OECD, available: 
 https://data.oecd.org/gdp/gross-domestic-product-gdp.htm
 
 Data for Life Expectancy at birth (2022) provided by United Nations, available: 
