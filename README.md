@@ -7,7 +7,10 @@ Here are the objectives I consider incorporating in my code:
 * Normalize/standardize the data if necsesary for better analyzis.
 * Identify and handle outliers that might affect the analysis.
 ### 2. Statistical Analysis
-* Perform statistical tests to quantify the relationship between GDP and life expectancy and Liberties.
+* Perform statistical tests to quantify the relationship between GDP and Life Expectancy and Liberties.
+  * Simple linear regression: GDP and Life Expectancy, GDP and Liberties, Life Expectancy and Liberties
+  * Multiple linear regression: What is the effect of Liberties and GDP on Life Expectancy
+  * Pearson's r: Life Expectancy and Liberties
 * Conduct regression analysis to model the relationship between these variables.
 ### 3. Data Visualization
 * Create visualizations using libraries such as Pltly
@@ -20,3 +23,16 @@ Here are the objectives I consider incorporating in my code:
 * Apply time series forecasting techniques to predict future trends.
 ### 6. Paper
 * Write a brief paper regarding findings from this analysis.
+
+### Sources
+Data for GDP per country in US dollars (2022 or latest available) provided by OECD, available: 
+https://data.oecd.org/gdp/gross-domestic-product-gdp.htm
+
+Data for Life Expectancy at birth (2022) provided by United Nations, available: 
+https://data.worldbank.org/indicator/SP.DYN.LE00.IN
+
+Data for Civil liberties index ranged from 0 to 10 (most liberties) provided by the Economist Intelligence Unit (2023), available: 
+https://ourworldindata.org/grapher/civil-liberties-index-eiu?tab=table
+
+### Disclaimer: 
+This is in no way to progress or dismiss any political stances. Civil liberties index has been accused of political bias and is subjective to an extent, nevertheless, if provides with a valuable data and allows for a best available data regarding civil liberties and countries' adherence to democratic values. To read more: https://ourworldindata.org/democracies-measurement
