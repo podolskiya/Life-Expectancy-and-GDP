@@ -28,6 +28,18 @@ df['Date'] = pd.to_datetime(df['Date'], format='%Y')
 latest_liberties_data = df.sort_values(by='Date').groupby('Country').tail(1)
 
 # rename country codes into full name
+def get_country_name(code):
+    try:
+        country = pycountry.countries.get(alpha_3=code)
+        return country.name
+    except AttributeError:
+        return 'Unknown'
+    
 
+gdp_per_capita['Country'] = gdp_per_capita['Country'].apply(get_country_name)
+print(gdp_per_capita.head())
+
+life_expectancy_data['Country'] = life_expectancy_data['Country'].apply(get_country_name)
+print(life_expectancy_data.head())
 
 #combine datasets
