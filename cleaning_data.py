@@ -27,6 +27,9 @@ df = pd.DataFrame(liberties_data)
 df['Date'] = pd.to_datetime(df['Date'], format='%Y')
 latest_liberties_data = df.sort_values(by='Date').groupby('Country').tail(1)
 
+# join gdp and life expectancy dataframes
+gdp_life_expectancy = latest_gdp_data.merge(latest_life_expectancy_data)
+
 # rename country codes into full name
 def get_country_name(code):
     try:
@@ -34,12 +37,24 @@ def get_country_name(code):
         return country.name
     except AttributeError:
         return 'Unknown'
+
+gdp_life_expectancy['Country'] = gdp_life_expectancy['Country'].apply(get_country_name)
+
+# save files
+fields = ['Country', 'Date', 'GDP per Capita', 'Life Expectancy']
+
+with open('gdp_life_expectancy.csv', 'w', newline='') as output_csv:
+    output_writer = csv.DictWriter(output_csv, fieldnames=fields)
+    output_writer.writeheader()
     
+    for index, row in gdp_life_expectancy.iterrows():
+        output_writer.writerow(row.to_dict())
 
-gdp_per_capita['Country'] = gdp_per_capita['Country'].apply(get_country_name)
-print(gdp_per_capita.head())
+fields = ['Country', 'Date', 'Value']
 
-life_expectancy_data['Country'] = life_expectancy_data['Country'].apply(get_country_name)
-print(life_expectancy_data.head())
-
-#combine datasets
+with open('liberty_data.csv', 'w', newline='') as output_csv:
+    output_writer = csv.DictWriter(output_csv, fieldnames=fields)
+    output_writer.writeheader()
+    
+    for index, row in latest_liberties_data.iterrows():
+        output_writer.writerow(row.to_dict())
