@@ -6,7 +6,7 @@ gdp_per_capita = pd.read_csv('raw_gdp_per_capita.csv')
 life_expectancy = pd.read_csv('raw_life_expectancy.csv')
 civil_liberties = pd.read_csv('raw_civil_liberties_index.csv')
 
-#rename columns
+# rename columns
 gdp_per_capita.columns = ['Country', 'Indicator', 'Subject', 'Measure', 'Frequency', 'Date', 'GDP per Capita', 'Flag Codes']
 life_expectancy.columns = ['Country', 'Indicator', 'Subject', 'Measure', 'Frequency', 'Date', 'Life Expectancy', 'Flag Codes']
 civil_liberties.columns = ['Country', 'Country Code', 'Date', 'Value']
@@ -56,5 +56,5 @@ with open('liberty_data.csv', 'w', newline='') as output_csv:
     output_writer = csv.DictWriter(output_csv, fieldnames=fields)
     output_writer.writeheader()
     
-    for index, row in latest_liberties_data.iterrows():
+    for index, row in gdp_life_expectancy.iterrows():
         output_writer.writerow(row.to_dict())
