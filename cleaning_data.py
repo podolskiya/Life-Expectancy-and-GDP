@@ -40,21 +40,16 @@ def get_country_name(code):
 
 gdp_life_expectancy['Country'] = gdp_life_expectancy['Country'].apply(get_country_name)
 
+df = gdp_life_expectancy.merge(latest_liberties_data)
+
 # save files
-fields = ['Country', 'Date', 'GDP per Capita', 'Life Expectancy']
+print(df.info())
+print(df)
+fields = ['Country', 'Date', 'GDP per Capita', 'Life Expectancy', 'Value']
 
-with open('gdp_life_expectancy.csv', 'w', newline='') as output_csv:
+with open('final_data.csv', 'w', newline='') as output_csv:
     output_writer = csv.DictWriter(output_csv, fieldnames=fields)
     output_writer.writeheader()
     
-    for index, row in gdp_life_expectancy.iterrows():
-        output_writer.writerow(row.to_dict())
-
-fields = ['Country', 'Date', 'Value']
-
-with open('liberty_data.csv', 'w', newline='') as output_csv:
-    output_writer = csv.DictWriter(output_csv, fieldnames=fields)
-    output_writer.writeheader()
-    
-    for index, row in gdp_life_expectancy.iterrows():
+    for index, row in df.iterrows():
         output_writer.writerow(row.to_dict())
