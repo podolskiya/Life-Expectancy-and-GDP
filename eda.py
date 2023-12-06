@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FuncFormatter
 
@@ -7,7 +8,6 @@ df = pd.read_csv('clean_df.csv')
 civlib = df['civlib_eiu']
 gdp = df['gdp_per_capita']
 life_expectancy = df['life_expectancy']
-
 
 #Summary Statistics
 mean_civlib = civlib.mean() #5.5608666666666675
@@ -33,8 +33,17 @@ min_life_expectancy = life_expectancy.min() #52.525
 max_life_expectancy = life_expectancy.max() #84.4456097560976
 quanties_life_expectancy = life_expectancy.quantile([0.25, 0.5, 0.75])  #0.25    65.288000    0.50    71.977000     0.75    76.671848
 
-print(gdp.head())
-#Visualization
+# Convert GDP into integers
+true_rows = gdp.loc[gdp == True]
+print(gdp)
+
+# Visualization
+plt.hist(gdp / 1000000000000, bins = 3, density=True)
+plt.xlabel('GDP')
+plt.ylabel('Density')
+plt.title('GDP Histogram')
+plt.show() #Ask for help with this one
+
 plt.hist(civlib, bins = 10)
 plt.xlabel('Liberty')
 plt.ylabel('Density')
@@ -42,18 +51,16 @@ plt.title('Liberty Index Histogram')
 plt.show()
 
 
-plt.figure(figsize=(8, 6))
-plt.hist(gdp, bins=10, color='skyblue', edgecolor='black')
-plt.title('Histogram of GDP')
-plt.xlabel('GDP')
-plt.ylabel('Frequency')
-formatter = FuncFormatter(lambda x, _: '{:,.0f}'.format(x))
-plt.gca().xaxis.set_major_formatter(formatter)
-plt.grid(True)
-plt.show()
-
 plt.hist(life_expectancy)
 plt.xlabel('Life Expectancy')
 plt.ylabel('Density')
 plt.title('Life Expectancy Histogram')
+plt.show()
+
+
+# Scatter plots
+plt.scatter(life_expectancy, civlib)
+plt.xlabel('Life Expectancy')
+plt.ylabel('Liberty Index')
+plt.title('Scatter Plot - Life Expectancy/Liberty Index')
 plt.show()
