@@ -33,16 +33,16 @@ min_life_expectancy = life_expectancy.min() #52.525
 max_life_expectancy = life_expectancy.max() #84.4456097560976
 quanties_life_expectancy = life_expectancy.quantile([0.25, 0.5, 0.75])  #0.25    65.288000    0.50    71.977000     0.75    76.671848
 
-# Convert GDP into integers
-true_rows = gdp.loc[gdp == True]
-print(gdp)
 
 # Visualization
-plt.hist(gdp / 1000000000000, bins = 3, density=True)
-plt.xlabel('GDP')
+plt.hist(gdp / 1e12, bins=10, density=True)  # Dividing by 1e12 to display in trillions
+plt.xlabel('GDP (in trillions)')
 plt.ylabel('Density')
 plt.title('GDP Histogram')
-plt.show() #Ask for help with this one
+formatter = FuncFormatter(lambda x, _: f'{x:.0f}T')  
+plt.gca().xaxis.set_major_formatter(formatter)
+plt.show()
+print(gdp.head(30))
 
 plt.hist(civlib, bins = 10)
 plt.xlabel('Liberty')
@@ -58,9 +58,17 @@ plt.title('Life Expectancy Histogram')
 plt.show()
 
 
-# Scatter plots
-plt.scatter(life_expectancy, civlib)
-plt.xlabel('Life Expectancy')
-plt.ylabel('Liberty Index')
-plt.title('Scatter Plot - Life Expectancy/Liberty Index')
+# Bivariate Statistics
+plt.scatter(civlib, life_expectancy, color='blue', label='Data Points')
+coefficients = np.polyfit(civlib, life_expectancy, 1)
+poly = np.poly1d(coefficients)
+plt.plot(civlib, poly(civlib), color='red', label='Fitted Line')
+plt.xlabel('Civil Liberties')
+plt.ylabel('Life Expectancy')
+plt.title('Life Expectancy vs Civil Liberties')
+plt.legend()
+plt.grid(True)
 plt.show()
+
+sorted_df = gdp.sort_values(ascending=False)
+print(sorted_df)
