@@ -5,6 +5,7 @@ from matplotlib.ticker import FuncFormatter
 
 df = pd.read_csv('clean_df.csv')
 
+country_names = df['Country Name']
 civlib = df['civlib_eiu']
 gdp = df['gdp_per_capita']
 life_expectancy = df['life_expectancy']
@@ -35,14 +36,14 @@ quanties_life_expectancy = life_expectancy.quantile([0.25, 0.5, 0.75])  #0.25   
 
 
 # Visualization
-plt.hist(gdp / 1e12, bins=10, density=True)  # Dividing by 1e12 to display in trillions
+gdp = gdp[gdp <= 1e13]
+plt.hist(gdp / 1e12, bins=50, density=True)  # Dividing by 1e12 to display in trillions
 plt.xlabel('GDP (in trillions)')
 plt.ylabel('Density')
 plt.title('GDP Histogram')
 formatter = FuncFormatter(lambda x, _: f'{x:.0f}T')  
 plt.gca().xaxis.set_major_formatter(formatter)
 plt.show()
-print(gdp.head(30))
 
 plt.hist(civlib, bins = 10)
 plt.xlabel('Liberty')
@@ -70,5 +71,27 @@ plt.legend()
 plt.grid(True)
 plt.show()
 
-sorted_df = gdp.sort_values(ascending=False)
-print(sorted_df)
+
+#Data visualization provides the following information: 1) Most countries of GDP are below 1T 2) Liuberty index distribution 3) Life expectancy is globally below 85 4)There is a positive linear relationship between Civil liberties and Life Expectancy
+#I would like to understand GDP data more now
+print(gdp.info())
+print(gdp.describe())
+
+plt.figure(figsize=(8, 6))
+plt.boxplot(gdp)
+plt.title('Boxplot of GDP')
+plt.ylabel('GDP')
+plt.show()
+
+plt.figure(figsize=(8, 6))
+plt.boxplot(gdp)
+plt.title('Boxplot of GDP')
+plt.ylabel('GDP')
+plt.show()
+
+#There is HUGE inequality between mean and 75-25 interquartile ranges and upper outliers.
+pearson_corr = life_expectancy.corr(civlib, method='pearson')
+print(f"Pearson correlation between 'life_expectancy' and 'civlib': {pearson_corr}")
+
+pearson_corr = gdp.corr(civlib, method='pearson')
+print(f"Pearson correlation between 'gdp' and 'civlib': {pearson_corr}")
